@@ -3,65 +3,65 @@
 
 {% translate "Lista Zleceń na Łóżka" as title %}
 {% block container %}
-    <ul class="nav nav-tabs" >
+    <h2>{{ hospital.code }} {{ hospital.name }}</h2>
+    <h3>{{ hospital.address }}</h3>
+    <ul class="nav nav-tabs">
         <li class="nav-item">
             <a
-            {% if mode == "all" %}
-                class="nav-link active" aria-current="page"
-            {% else %}
-                class="nav-link"
-            {% endif %}
-            href="{% url 'ticket-list' hospital.pk "all" %}"
+                    {% if mode == "all" %}
+                        class="nav-link active" aria-current="page"
+                    {% else %}
+                        class="nav-link"
+                    {% endif %}
+                        href="{% url 'ticket-list' hospital.pk "all" %}"
             >
-            {% translate "Wszystkie Zlecenia" %}
+                {% translate "Wszystkie Zlecenia" %}
             </a>
         </li>
         <li class="nav-item">
             <a
-            {% if mode == "orphans" %}
-                class="nav-link active" aria-current="page"
-            {% else %}
-                class="nav-link"
-            {% endif %}
-            href="{% url 'ticket-list' hospital.pk "orphans" %}"
+                    {% if mode == "orphans" %}
+                        class="nav-link active" aria-current="page"
+                    {% else %}
+                        class="nav-link"
+                    {% endif %}
+                        href="{% url 'ticket-list' hospital.pk "orphans" %}"
             >
-            {% translate "Oczekujace Zlecenia" %}
+                {% translate "Oczekujace Zlecenia" %}
             </a>
         </li>
         <li class="nav-item">
             <a
-            {% if mode == "expires" %}
-                class="nav-link active" aria-current="page"
-            {% else %}
-                class="nav-link"
-            {% endif %}
-            href="{% url 'ticket-list' hospital.pk "expires" %}"
+                    {% if mode == "expires" %}
+                        class="nav-link active" aria-current="page"
+                    {% else %}
+                        class="nav-link"
+                    {% endif %}
+                        href="{% url 'ticket-list' hospital.pk "expires" %}"
             >
-            {% translate "Przeterminowane Zlecenia" %}
+                {% translate "Przeterminowane Zlecenia" %}
             </a>
         </li>
         <li class="nav-item">
             <a
-            {% if mode == "attentions" %}
-                class="nav-link active" aria-current="page"
-            {% else %}
-                class="nav-link"
-            {% endif %}
-            href="{% url 'ticket-list' hospital.pk "attentions" %}"
+                    {% if mode == "attentions" %}
+                        class="nav-link active" aria-current="page"
+                    {% else %}
+                        class="nav-link"
+                    {% endif %}
+                        href="{% url 'ticket-list' hospital.pk "attentions" %}"
             >
-            {% translate "Zlecenia z Uwagami" %}
+                {% translate "Zlecenia z Uwagami" %}
             </a>
         </li>
     </ul>
     <div class="card-group hospital-cards">
-        <h2>{{ hospital.code }} {{ hospital.name }}</h2>
-        <h3>{{ hospital.address }}</h3>
-        <tbody>
         {% for ticket in tickets %}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
+                <h5 class="card-title">{{ ticket }}</h5>
                     {% if ticket.bed %}
-                        <h5 class="card-title">{{ ticket.code }} {{ ticket.bed.localisation }}</h5>
+                        <h6 class="card-subtitle">{{ ticket.bed }}</h6>
                         {% if ticket.bed.description %}
                             <p class="card-text">{{ ticket.bed.description }}</p>
                         {% endif %}
@@ -74,8 +74,9 @@
                         {% if ticket.bed.child %}
                             <h6 class="card-subtitle">{% translate "Dzięcięce" %}</h6>
                         {% endif %}
+
                     {% endif %}
-                    <h6 class="card-subtitle">{{ ticket }}</h6>
+
                     {% for message in bed.ticket.attention %}
                         <h6 class="card-subtitle">{{ message }}</h6>
                     {% endfor %}
@@ -93,10 +94,11 @@
                     </a>
                 </div>
             </div>
-            <a href="{% url 'beds-create' hospital.pk %}" class="btn btn-success">
-                {% translate "Wprowadź Nowe Łóżka." %}
-            </a>
         {% endfor %}
+        <a href="{% url 'beds-create' hospital.pk %}" class="card-link">
+            {% translate "Wprowadź Nowe Łóżka." %}
+        </a>
+
     </div>
 
 {% endblock container %}
