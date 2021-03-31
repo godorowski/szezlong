@@ -69,7 +69,7 @@ class Ticket(models.Model):
         return ticket_dict
 
     def __str__(self):
-        return f"{self.code} expire {self.expiration_date}"
+        return f"{self.code} expire {self.expiration_date.strftime('%d %h %Y %H:%M')}"
 
     def gen_code(self):
         code_generator = Codes(
