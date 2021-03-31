@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% translate "Hospitals List" as title %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block extra_js %}
+{% endblock extra_js %}
+{% block container %}
+    <ul class="nav flex-column">
+        {% for hospital in hospitals %}
+            <li class="nav-item">
+                <a
+                        class="nav-link"
+                        href="{% url 'ticket-list' hospital.pk "orphans" %}"
+                >
+                    {{ hospital }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock container %}

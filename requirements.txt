@@ -1,0 +1,45 @@
+# wagtail CMS
+wagtail
+
+# for django and core packages
+Django
+psycopg2
+
+# base django extensions
+django-extensions
+python-memcached
+django-middleware-global-request # global access to request
+Werkzeug # for runserver_plus
+bpython # for shell_plus
+
+# custom tools set
+beret_utils
+
+# for datetime and calendar
+pytz
+holidays
+
+# for testing
+pytest
+factory_boy
+
+# for deploying
+django-heroku
+gunicorn
+dj-database-url
+
+# for data science
+jupyter
+ipython
+notebook
+
+# rest framework
+djangorestframework
+markdown # Markdown support for the browsable API
+coreapi # Schema generation support.
+drf-yasg # next generation of swagger
+djangorestframework-api-key # for api key authentiation
+
+# Frontend support
+# https://python-webpack-boilerplate.readthedocs.io/
+python-webpack-boilerplate

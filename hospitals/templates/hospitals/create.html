@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% translate "Create a New Hospital" as title %}
+{% block container %}
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">{% translate "Create a New Hospital" %}</h5>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">{% translate "Create" %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock container %}

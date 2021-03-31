@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% translate "Lista Zleceń na Łóżka" as title %}
+{% block container %}
+    <ul class="nav nav-tabs" >
+        <li class="nav-item">
+            <a
+            {% if mode == "all" %}
+                class="nav-link active" aria-current="page"
+            {% else %}
+                class="nav-link"
+            {% endif %}
+            href="{% url 'ticket-list' hospital.pk "all" %}"
+            >
+            {% translate "Wszystkie Zlecenia" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a
+            {% if mode == "orphans" %}
+                class="nav-link active" aria-current="page"
+            {% else %}
+                class="nav-link"
+            {% endif %}
+            href="{% url 'ticket-list' hospital.pk "orphans" %}"
+            >
+            {% translate "Oczekujace Zlecenia" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a
+            {% if mode == "expires" %}
+                class="nav-link active" aria-current="page"
+            {% else %}
+                class="nav-link"
+            {% endif %}
+            href="{% url 'ticket-list' hospital.pk "expires" %}"
+            >
+            {% translate "Przeterminowane Zlecenia" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a
+            {% if mode == "attentions" %}
+                class="nav-link active" aria-current="page"
+            {% else %}
+                class="nav-link"
+            {% endif %}
+            href="{% url 'ticket-list' hospital.pk "attentions" %}"
+            >
+            {% translate "Zlecenia z Uwagami" %}
+            </a>
+        </li>
+    </ul>
+    <div class="card-group hospital-cards">
+        <h2>{{ hospital.code }} {{ hospital.name }}</h2>
+        <h3>{{ hospital.address }}</h3>
+        <tbody>
+        {% for ticket in tickets %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    {% if ticket.bed %}
+                        <h5 class="card-title">{{ ticket.code }} {{ ticket.bed.localisation }}</h5>
+                        {% if ticket.bed.description %}
+                            <p class="card-text">{{ ticket.bed.description }}</p>
+                        {% endif %}
+                        {% if ticket.bed.respirator %}
+                            <h6 class="card-subtitle">{% translate "Respirator" %}</h6>
+                        {% endif %}
+                        {% if ticket.bed.oxygen %}
+                            <h6 class="card-subtitle">{% translate "Tlen" %}</h6>
+                        {% endif %}
+                        {% if ticket.bed.child %}
+                            <h6 class="card-subtitle">{% translate "Dzięcięce" %}</h6>
+                        {% endif %}
+                    {% endif %}
+                    <h6 class="card-subtitle">{{ ticket }}</h6>
+                    {% for message in bed.ticket.attention %}
+                        <h6 class="card-subtitle">{{ message }}</h6>
+                    {% endfor %}
+                    <a
+                            href="{% url 'ticket-update' ticket.pk %}"
+                            class="card-link"
+                    >
+                        {% translate "Aktualizuj Dane Pacjenta" %}
+                    </a>
+                    <a
+                            href="{% url 'ticket-delete' ticket.pk %}"
+                            class="card-link"
+                    >
+                        {% translate "Zamknij Przydział Pacjenta" %}
+                    </a>
+                </div>
+            </div>
+            <a href="{% url 'beds-create' hospital.pk %}" class="btn btn-success">
+                {% translate "Wprowadź Nowe Łóżka." %}
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock container %}

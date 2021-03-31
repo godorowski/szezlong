@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% translate "Lista Łóżek" as title %}
+{% block container %}
+    {% for hospital, beds in hospitals %}
+        <div class="card-group hospital-cards">
+            <h2>{{ hospital.code }} {{ hospital.name }}</h2>
+            <h3>{{ hospital.address }}</h3>
+            <tbody>
+            {% for bed in beds %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ bed.code }} {{ bed.localisation }}</h5>
+                        {% if bed.description %}
+                            <p class="card-text">{{ description }}</p>
+                        {% endif %}
+                        {% if bed.respirator %}
+                            <h6 class="card-subtitle">{% translate "Respirator" %}</h6>
+                        {% endif %}
+                        {% if bed.oxygen %}
+                            <h6 class="card-subtitle">{% translate "Tlen" %}</h6>
+                        {% endif %}
+                        {% if bed.child %}
+                            <h6 class="card-subtitle">{% translate "Dzięcięce" %}</h6>
+                        {% endif %}
+                        {% if bed.ticket %}
+                            <h6 class="card-subtitle">{{ bed.ticket }}</h6>
+                            {% for message in bed.ticket.attention %}
+                                <h6 class="card-subtitle">{{ message }}</h6>
+                            {% endfor %}
+                            <a
+                                    href="{% url 'ticket-update' bed.ticket.pk %}"
+                                    class="card-link"
+                            >
+                                {% translate "Aktualizuj Dane Pacjenta" %}
+                            </a>
+                            <a
+                                    href="{% url 'ticket-delete' bed.ticket.pk %}"
+                                    class="card-link"
+                            >
+                                {% translate "Usuń Przydział Pacjenta" %}
+                            </a>
+                        {% else %}
+                            <a
+                                    href="{% url 'ticket-create-bed' bed.pk %}"
+                                    class="card-link"
+                            >
+                                {% translate "Przydziel Łóżko" %}
+                            </a>
+                        {% endif %}
+                        <a
+                                href="{% url 'beds-update' bed.pk %}"
+                                class="card-link"
+                        >
+                            {% translate "Edytuj Łóżko" %}
+                        </a>
+                    </div>
+                </div>
+                <a href="{% url 'beds-create' hospital.pk %}" class="btn btn-success">
+                    {% translate "Wprowadź Nowe Łóżka." %}
+                </a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock container %}

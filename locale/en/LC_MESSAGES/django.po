@@ -1,0 +1,153 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-24 01:46+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: beds/models.py:8
+msgid "Bed code"
+msgstr ""
+
+#: beds/models.py:9
+msgid "Hospital"
+msgstr ""
+
+#: beds/models.py:10
+msgid "Respirator"
+msgstr ""
+
+#: beds/models.py:11
+msgid "Oxygen"
+msgstr ""
+
+#: beds/models.py:12
+msgid "Male"
+msgstr ""
+
+#: beds/models.py:13
+msgid "Female"
+msgstr ""
+
+#: beds/templates/beds/create.html:5 beds/templates/beds/create.html:9
+#: beds/templates/beds/list.html:25
+msgid "Create a New Bed"
+msgstr ""
+
+#: beds/templates/beds/create.html:15
+#: hospitals/templates/hospitals/create.html:15
+msgid "Create"
+msgstr ""
+
+#: beds/templates/beds/delete.html:5 beds/templates/beds/delete.html:9
+msgid "Delete Bed"
+msgstr ""
+
+#: beds/templates/beds/delete.html:15
+#: hospitals/templates/hospitals/delete.html:15
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: beds/templates/beds/delete.html:17 beds/templates/beds/list.html:19
+#: hospitals/templates/hospitals/delete.html:17
+#: hospitals/templates/hospitals/list.html:26
+msgid "Delete"
+msgstr ""
+
+#: beds/templates/beds/list.html:4 beds/templates/beds/list.html:7
+msgid "Beds List"
+msgstr ""
+
+#: beds/templates/beds/list.html:10
+msgid "Hospital name"
+msgstr ""
+
+#: beds/templates/beds/update.html:4 beds/templates/beds/update.html:8
+msgid "Update Bed"
+msgstr ""
+
+#: beds/templates/beds/update.html:14
+#: hospitals/templates/hospitals/update.html:14
+msgid "Update"
+msgstr ""
+
+#: hospitals/models.py:6
+msgid "Hospital code"
+msgstr ""
+
+#: hospitals/models.py:7 hospitals/templates/hospitals/list.html:15
+msgid "Hospital full name"
+msgstr "Hospital full name aaa"
+
+#: hospitals/models.py:8 hospitals/templates/hospitals/list.html:16
+msgid "Hospital address"
+msgstr ""
+
+#: hospitals/models.py:9
+msgid "Internal medicine"
+msgstr ""
+
+#: hospitals/models.py:10
+msgid "Neurology"
+msgstr ""
+
+#: hospitals/models.py:11
+msgid "Surgery"
+msgstr ""
+
+#: hospitals/models.py:12
+msgid "Gynecology"
+msgstr ""
+
+#: hospitals/models.py:13
+msgid "Laryngology"
+msgstr ""
+
+#: hospitals/models.py:14
+msgid "Orthopedics"
+msgstr ""
+
+#: hospitals/models.py:15
+msgid "Ophthalmology"
+msgstr ""
+
+#: hospitals/models.py:16
+msgid "Psychiatry"
+msgstr ""
+
+#: hospitals/models.py:17
+msgid "Neonatology"
+msgstr ""
+
+#: hospitals/templates/hospitals/create.html:5
+#: hospitals/templates/hospitals/create.html:9
+#: hospitals/templates/hospitals/list.html:32
+msgid "Create a New Hospital"
+msgstr ""
+
+#: hospitals/templates/hospitals/delete.html:5
+#: hospitals/templates/hospitals/delete.html:9
+msgid "Delete Hospital"
+msgstr ""
+
+#: hospitals/templates/hospitals/list.html:4
+msgid "Hospitals List"
+msgstr ""
+
+#: hospitals/templates/hospitals/update.html:4
+#: hospitals/templates/hospitals/update.html:8
+msgid "Update Hospital"
+msgstr ""

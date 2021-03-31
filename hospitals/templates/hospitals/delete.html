@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% translate "Delete Hospital" as title %}
+{% block container %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">{% translate "Delete Hospital" %} {{object}}</h5>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="alert alert-warning" role="alert">
+                {% translate "Are you sure you want to delete" %} <strong>{{ object }}</strong> ?
+            </div>
+            <button type="submit" class="btn btn-danger">{% translate "Delete" %}</button>
+        </form>
+    </div>
+</div>
+{% endblock container %}

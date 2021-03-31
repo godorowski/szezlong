@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-24 01:46+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: beds/models.py:8
+msgid "Bed code"
+msgstr "Kod łóżka"
+
+#: beds/models.py:9
+#, fuzzy
+#| msgid "Hospital address"
+msgid "Hospital"
+msgstr "Adres szpitala"
+
+#: beds/models.py:10
+msgid "Respirator"
+msgstr "Respirator"
+
+#: beds/models.py:11
+msgid "Oxygen"
+msgstr "Tlen"
+
+#: beds/models.py:12
+msgid "Male"
+msgstr "Męskie"
+
+#: beds/models.py:13
+msgid "Female"
+msgstr "Żeńskie"
+
+#: beds/templates/beds/create.html:5 beds/templates/beds/create.html:9
+#: beds/templates/beds/list.html:25
+msgid "Create a New Bed"
+msgstr "Wprowadź nowe łóżko"
+
+#: beds/templates/beds/create.html:15
+#: hospitals/templates/hospitals/create.html:15
+msgid "Create"
+msgstr "Stwórz"
+
+#: beds/templates/beds/delete.html:5 beds/templates/beds/delete.html:9
+msgid "Delete Bed"
+msgstr "Usuń łóżko"
+
+#: beds/templates/beds/delete.html:15
+#: hospitals/templates/hospitals/delete.html:15
+msgid "Are you sure you want to delete"
+msgstr "Czy jesteś pewien że chcesz usunąć"
+
+#: beds/templates/beds/delete.html:17 beds/templates/beds/list.html:19
+#: hospitals/templates/hospitals/delete.html:17
+#: hospitals/templates/hospitals/list.html:26
+msgid "Delete"
+msgstr "Usuń"
+
+#: beds/templates/beds/list.html:4 beds/templates/beds/list.html:7
+msgid "Beds List"
+msgstr "Lista łóżek"
+
+#: beds/templates/beds/list.html:10
+#, fuzzy
+#| msgid "Hospital full name"
+msgid "Hospital name"
+msgstr "Pełna nazwa szpitala"
+
+#: beds/templates/beds/update.html:4 beds/templates/beds/update.html:8
+msgid "Update Bed"
+msgstr "Aktualizuj łóżko"
+
+#: beds/templates/beds/update.html:14
+#: hospitals/templates/hospitals/update.html:14
+msgid "Update"
+msgstr "Aktualizuj"
+
+#: hospitals/models.py:6
+#, fuzzy
+#| msgid "Hospital address"
+msgid "Hospital code"
+msgstr "Adres szpitala"
+
+#: hospitals/models.py:7 hospitals/templates/hospitals/list.html:15
+msgid "Hospital full name"
+msgstr "Pełna nazwa szpitala"
+
+#: hospitals/models.py:8 hospitals/templates/hospitals/list.html:16
+msgid "Hospital address"
+msgstr "Adres szpitala"
+
+#: hospitals/models.py:9
+msgid "Internal medicine"
+msgstr "Interna"
+
+#: hospitals/models.py:10
+msgid "Neurology"
+msgstr "Neurologia"
+
+#: hospitals/models.py:11
+msgid "Surgery"
+msgstr "Chirurgia"
+
+#: hospitals/models.py:12
+msgid "Gynecology"
+msgstr "Ginekologia"
+
+#: hospitals/models.py:13
+msgid "Laryngology"
+msgstr "Laryngologia"
+
+#: hospitals/models.py:14
+msgid "Orthopedics"
+msgstr "Ortopedia"
+
+#: hospitals/models.py:15
+msgid "Ophthalmology"
+msgstr "Okulistyka"
+
+#: hospitals/models.py:16
+msgid "Psychiatry"
+msgstr "Psychiatria"
+
+#: hospitals/models.py:17
+msgid "Neonatology"
+msgstr "Neonatologia"
+
+#: hospitals/templates/hospitals/create.html:5
+#: hospitals/templates/hospitals/create.html:9
+#: hospitals/templates/hospitals/list.html:32
+msgid "Create a New Hospital"
+msgstr "Wprowadź nowy szpital"
+
+#: hospitals/templates/hospitals/delete.html:5
+#: hospitals/templates/hospitals/delete.html:9
+msgid "Delete Hospital"
+msgstr "Usuń szpital"
+
+#: hospitals/templates/hospitals/list.html:4
+#, fuzzy
+#| msgid "Hospital address"
+msgid "Hospitals List"
+msgstr "Adres szpitala"
+
+#: hospitals/templates/hospitals/update.html:4
+#: hospitals/templates/hospitals/update.html:8
+msgid "Update Hospital"
+msgstr "Aktualizuj szpital"
+
+#~ msgid "Polish"
+#~ msgstr "Polski"
+
+#~ msgid "English"
+#~ msgstr "Angielski"
