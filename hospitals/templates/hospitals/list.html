@@ -25,7 +25,7 @@
             <th scope="col">
                     <a
                             class="btn btn-{% if param is None %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}{% else %}{% endif %}"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}{% else %}#{% endif %}"
                     >
                         {% translate "Razem Łóżek" %}
                     </a>

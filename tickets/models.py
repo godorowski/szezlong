@@ -74,7 +74,7 @@ class Ticket(models.Model):
     def gen_code(self):
         code_generator = Codes(
             chars=Codes.DEFAULT_CHARS.upper(),
-            count=Ticket.objects.count() + DeletedTicket.objects.count()
+            count=Ticket.objects.count() + DeletedTicket.objects.count() + 1
         )
         while True:
             code = f"{self.hospital.code}:{code_generator()}"
