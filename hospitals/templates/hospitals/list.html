@@ -5,287 +5,273 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block extra_js %}
 {% endblock extra_js %}
-{% block container %}
-    <table class="table">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">{% translate "Kod Szpitala" %}</th>
-            <th scope="col">{% translate "Nazwa Szpitala" %}</th>
-            <th scope="col">{% translate "Adres Szpitala" %}</th>
-            <th scope="col">
-                {% for spec in specs %}
-                    <a
-                            class="btn {% if current_spec and spec.pk == current_spec.pk %}btn-success{% else %}btn-default{% endif %} spec"
-                            href="?spec={{ spec.id }}{{ param_url }}"
-                    >
-                        {{ spec.name }}
-                    </a>
-                {% endfor %}
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param is None %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}{% else %}#{% endif %}"
-                    >
-                        {% translate "Razem Łóżek" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "all" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=all"
-                    >
-                        {% translate "Dostępnych Łóżek" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "all-expired" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=all-expired"
-                    >
-                        {% translate "Przeterminowanych" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "all-attentions" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=all-attentions"
-                    >
-                        {% translate "Z Uwagami" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "respirators" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators"
-                    >
-                        {% translate "Razem Łóżek Respiratorowych" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "respirators" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators"
-                    >
-                        {% translate "Dostępnych Łóżek Respiratorowych" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "respirators-expired" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators-expired"
-                    >
-                        {% translate "Przeterminowanych Respiratorowych" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "respirators-attentions" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators-attentions"
-                    >
-                        {% translate "Z Uwagami Respiratorowych" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "oxygen" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen"
-                    >
-                        {% translate "Razem Łóżek Tlenowych" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "oxygen" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen"
-                    >
-                        {% translate "Dostępnych Łóżek Tlenowych" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "oxygen" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen-expired"
-                    >
-                        {% translate "Przeterminowanych Tlenowych" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "oxygen" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen-attentions"
-                    >
-                        {% translate "Z Uwagami Tlenowych" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "children" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=children"
-                    >
-                        {% translate "Razem Dziecięce" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "children" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=all-children"
-                    >
-                        {% translate "Dostępne Dziecięce" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "children-respirators" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators-children"
-                    >
-                        {% translate "Dostępne Dziecięce Respiratorowe" %}
-                    </a>
-            </th>
-            <th scope="col">
-                    <a
-                            class="btn btn-{% if param == "children-oxygen" %}success{% else %}default{% endif %} param"
-                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen-children"
-                    >
-                        {% translate "Dostępne Dziecięce Tlenowe" %}
-                    </a>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for hospital, specs in hospitals %}
-            <tr>
-                <td><a href="{% url 'hospital-update' hospital.pk %}">{{ hospital.code }}</a></td>
-                <td><a href="{% url 'hospital-update' hospital.pk %}">{{ hospital.name }}</a></td>
-                <td>{{ hospital.address }}</td>
+{% block filter %}
+    <div width="100%"
+         style="margin: 0 auto; margin-top: 20px; border: 3px red solid; padding: 20px; border-radius: 20px; margin-bottom: 18px; background-color: white;">
+        <div class="card card-body" style="padding: 10px; border-radius: 20px;">
 
-                <td>
+            <div>
+                <center>
+                    <a
+                            class="btn btn-sm btn-outline-secondary medicine"
+                            href="?param={{ param }}"
+                    >
+                        <b style="color: black;">Wszystkie Szpitale</b>
+                    </a>&nbsp;
                     {% for spec in specs %}
-                        <span class="btn btn-success">
-                                {{ spec.name }}
-                            </span>
+                        <a
+                                class="btn btn-sm btn-outline-secondary medicine {% if current_spec and spec.pk == current_spec.pk %}btn-success{% else %}btn-default{% endif %} spec"
+                                href="?spec={{ spec.id }}{{ param_url }}"
+                                {% if current_spec and spec.pk == current_spec.pk %}style="background-color: lightgrey;
+"{% endif %}
+                        >
+                            <b style="color: black;">{{ spec.name }}</b>
+                        </a>&nbsp;
                     {% endfor %}
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "all" %}"
-                            class="btn btn-default">
-                        {{ hospital.total_beds }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "all" %}"
-                            class="btn btn-default">
-                        {{ hospital.available_beds }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "all" %}"
-                            class="btn btn-default">
-                        {{ hospital.total_expires }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "all" %}"
-                            class="btn btn-default">
-                        {{ hospital.total_attentions }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "respirators" %}"
-                            class="btn btn-default">
-                        {{ hospital.total_respirators }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "respirators" %}"
-                            class="btn btn-default">
-                        {{ hospital.available_respirators }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "respirators" %}"
-                            class="btn btn-default">
-                        {{ hospital.expires_respirators }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "respirators" %}"
-                            class="btn btn-default">
-                        {{ hospital.attentions_respirators }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "oxygen" %}"
-                            class="btn btn-default">
-                        {{ hospital.total_oxygens }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "oxygen" %}"
-                            class="btn btn-default">
-                        {{ hospital.available_oxygens }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "oxygen" %}"
-                            class="btn btn-default">
-                        {{ hospital.expires_oxygens }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "oxygen" %}"
-                            class="btn btn-default">
-                        {{ hospital.attentions_oxygens }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "children" %}"
-                            class="btn btn-default">
-                        {{ hospital.total_children }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "children" %}"
-                            class="btn btn-default">
-                        {{ hospital.available_children }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "respirators-children" %}"
-                            class="btn btn-default">
-                        {{ hospital.available_children_respirators }}
-                    </a>
-                </td>
-                <td>
-                    <a
-                            href="{% url 'ticket-create' hospital.pk "oxygen-children" %}"
-                            class="btn btn-default">
-                        {{ hospital.available_children_oxygens }}
-                    </a>
-                </td>
-                {#                <td><a href="{% url 'hospital-delete' hospital.pk %}" class="btn btn-danger">#}
-                {#                    {% translate "Delete" %}#}
-                {#                </a></td>#}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{% url 'hospital-create' %}" class="btn btn-success">
-        {% translate "Create a New Hospital" %}
-    </a>
+                </center>
+            </div>
+
+        </div>
+        <form class="form-inline my-2 center">
+            <center>
+                <a href="{% if current_spec %}?spec={{ current_spec.id }}{% else %}?param=all{% endif %}"
+                   style="border-radius: 20px; border: 2px #5bc0de solid; background: white !important; color: black;"
+                   class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
+                   title="Wszystkie łóżka"><i style="color: black;" class="fas fa-2x fa-procedures"></i>
+                </a>&nbsp;&nbsp;&nbsp;
+                <a
+                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators-expired"
+                        style="border-radius: 20px; border: 2px #5bc0de solid;
+                                {% if param == "respirators-expired" %}background: lightgrey !important;
+                                {% else %}background: white !important;{% endif %} color:
+                                black;"
+                        class="btn btn-outline-success my-2 my-sm-0"
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="Tylko z respiratorami"
+                >
+                    <i style="color: black;" class="fas fa-2x fa-heartbeat"></i>
+                </a>&nbsp;&nbsp;&nbsp;
+                <a
+                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?
+{% endif %}param=oxygen-expired"
+                        style="border-radius: 20px; border: 2px #5bc0de solid;
+                                {% if param == "oxygen-expired" %}background: lightgrey !important;
+                                {% else %}background: white !important;{% endif %} color: black;"
+                        class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
+                        title="Tylko z tlenem"
+                >
+                    <i style="color: black;" class="fas fa-2x fa-lungs"></i>
+                </a>&nbsp;&nbsp;&nbsp;
+                <a
+                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?
+{% endif %}param=children"
+                        style="border-radius: 20px; border: 2px #5bc0de solid; {% if param == "children" %}background: lightgrey !important;
+                        {% else %}background: white !important;{% endif %} color:
+                                black;"
+                        class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
+                        title="Tylko dla dzieci">
+                    <i style="color: black;" class="fas fa-2x fa-baby"></i>
+                </a>&nbsp;&nbsp;&nbsp;
+                <a
+                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=children-respirators"
+                        style="border-radius: 20px; border: 2px #5bc0de solid;
+                                {% if param == "children-respirators" %}background: lightgrey !important;
+                                {% else %}background: white !important;{% endif %} color:
+                                black;"
+                        class="btn btn-outline-success my-2 my-sm-0"
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="Tylko z respiratorami dla dzieci"
+                >
+                    <i style="color: black;" class="fas fa-2x fa-heartbeat"></i>
+                    <i style="color: black;" class="fas fa-2x fa-baby"></i>
+                </a>&nbsp;&nbsp;&nbsp;
+                <a
+                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?
+{% endif %}param=children-oxygen"
+                        style="border-radius: 20px; border: 2px #5bc0de solid;
+                                {% if param == "children-oxygen" %}background: lightgrey !important;
+                                {% else %}background: white !important;{% endif %} color: black;"
+                        class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
+                        title="Tylko z tlenem dla dzieci"
+                >
+                    <i style="color: black;" class="fas fa-2x fa-lungs"></i>
+                    <i style="color: black;" class="fas fa-2x fa-baby"></i>
+                </a>&nbsp;&nbsp;&nbsp;
+                <button style="border-radius: 20px; border: 2px #5bc0de solid; background: white !important; color: black;"
+                        class="btn btn-outline-success my-2 my-sm-0" data-toggle="collapse" href="#collapseSearch">
+                    <i
+                            style="color: black;" class="fas fa-2x fa-search"></i></button>
+            </center>
+        </form>
+
+        <div class="collapse" id="collapseSearch" style="margin-top: 16px;">
+            <div class="card card-body" style="padding: 10px; border-radius: 20px;">
+
+                <div>
+                    <center>
+                        <input style="border-radius: 20px; border: 2px #5bc0de solid; max-width:400px; height: 40px;"
+                               class="form-control mr-sm-2" type="search" placeholder="Szukaj" aria-label="Search">
+                    </center>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock filter %}
+{% block container %}
+    <div class="col-md-12">
+        <div class="row">
+        {% for hospital, specs in hospitals %}
+            <div class="col-md-4">
+                <!-- KARTA SZPITALA -->
+                <div class="card outlined" style="border-radius: 20px;">
+                    <h5 class="card-header"
+                        style="border-top-left-radius: 20px; border-top-right-radius: 20px; margin-bottom: -10px !important;">
+                        <a style="float: left;" href="tel:555555555"><i style="color: red;"
+                                                                        class="fas fa-phone"></i></a>
+                        <center>{{ hospital.name }}
+                            <a style="float: right;"
+                               href="https://www.google.com/maps/place/Szpital+Biela%C5%84ski/@52.2867672,20.951251,15z/data=!4m2!3m1!1s0x0:0xed64f428fc4b4d43?sa=X&ved=2ahUKEwi3xO-Wr9rvAhVBAhAIHV4UD7UQ_BIwF3oECCIQBQ"
+                               target="_blank"><i style="color: red;" class="fas fa-map-marker-alt"></i></a>
+                        </center>
+
+                    </h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <center>
+
+                                <span style="font-size: 30px; !important;">Dostępne łóżka {{ bed_desc }}: <b
+                                        style="color: black;">{{ hospital.available_beds }}</b><br></span>
+                                <span style="color: dimgrey;">Wszystkich {{ bed_desc }}: <b>{{ hospital.total_beds }}</b></span><br>
+                        <hr />
+                        <a style="border-radius: 20px; padding:10px; margin-bottom: 7px; border: 2px solid #5bc0de;"
+                                type="button" class="btn btn-sm btn-outline-secondary medicine" href="
+{% url 'ticket-create' hospital.pk param %}">
+
+                            <b style="color: black;" data-toggle="tooltip" data-placement="bottom"
+                               title="Przypisz pacjenta">
+
+                                <span style="font-size: 16px; font-weight: 500; position: relative; bottom: 5px;">Przypisz pacjenta</span>
+                                &nbsp; <i style="font-size: 30px; color: black;" class="fas fa-user-plus"></i>
+
+                            </b>
+                        </a>&nbsp;
+
+
+                        <a class="btn btn-info" data-toggle="collapse" href="#collapseExample-{{ hospital.pk }}"
+                           role="button"
+                           aria-expanded="false" aria-controls="collapseExample"
+                           style="width: 100%; border-radius: 0px; margin-bottom: -35px; margin-top: 9px;">
+                            <i style="color: white;" class="fas fa-chevron-down"></i>
+                            &nbsp; więcej informacji &nbsp;
+                            <i style="font-size: 23px; color: white;" class="fas fa-heartbeat" data-toggle="tooltip"
+                               data-placement="bottom" title="Łóżka z respiratorami"></i>&nbsp;
+                            <i style="font-size: 23px; color: white;" class="fas fa-lungs" data-toggle="tooltip"
+                               data-placement="bottom" title="Łóżka z tlenem"></i>&nbsp;
+                            <i style="font-size: 23px; color: white;" class="fas fa-baby" data-toggle="tooltip"
+                               data-placement="bottom" title="Łóżka dla dzieci"></i>&nbsp;&nbsp;
+                            <i style="color: white;" class="fas fa-chevron-down"></i>
+                            <br><br>
+                        </a>
+                        <div class="collapse" id="collapseExample-{{ hospital.pk }}">
+                            <div class="card card-body"
+                                 style="border-bottom: none; border-left: none; border-right: none; padding: 10px; margin-top: 16px; border-radius: 20px;">
+                                Wszystkich: {{ hospital.total_beds }}
+                                Dostępne: {{ hospital.available_beds }}
+                                Przeterminowane: {{ hospital.total_expires }}<br>
+                                Z uwagami: {{ hospital.total_attentions }}<br><br>
+                                <i style="color: black;" class="fas fa-2x fa-heartbeat"></i>
+                                <span style="color: #5bc0de; font-weight: 600">Dostępne respiratorowe: {{ hospital.available_respirators }}<br></span>
+                                Wszystkie respiratorowe: {{ hospital.total_respirators }}<br>
+                                Przeterminowane respiratorowe: {{ hospital.expires_respirators }}<br>
+                                Z uwagami respiratorowe: {{ hospital.attentions_respirators }}<br><br>
+                                <i style="color: black;" class="fas fa-2x fa-lungs"></i>
+                                <span style="color: #5bc0de; font-weight: 600">Dostępne tlenowe: {{ hospital.available_oxygens }}<br></span>
+                                Wszystkie tlenowe: {{ hospital.total_oxygens }}<br>
+                                Przeterminowane tlenowe: {{ hospital.expires_oxygens }}<br>
+                                Z uwagami tlenowe: {{ hospital.attentions_oxygens }}<br><br>
+                                <i style="color: black;" class="fas fa-2x fa-baby"></i>
+                                <span style="color: #5bc0de; font-weight: 600">Dostępne dziecięce: {{ hospital.available_children }}<br></span>
+                                Wszystkie dziecięce: {{ hospital.total_children }}<br>
+                                <span style="color: #5bc0de; font-weight: 600">Dostępne dziecięce respiratorowe: {{ hospital.available_children_respirators }}<br></span>
+                                <span style="color: #5bc0de; font-weight: 600">Dostępne dziecięce tlenowe: {{ hospital.available_children_oxygens }}<br></span>
+                            </div>
+                        </div>
+                        </center>
+                        </p>
+                    </div>
+                    <div class="card-footer" style="border-radius: 20px; min-height: 130px;">
+                        <center>
+                            {% for spec in specs %}
+                            <button type="button" class="btn btn-sm btn-outline-secondary medicine"><b
+                                    style="color: black;">{{ spec.name }}</b></button>&nbsp;
+                                {% endfor %}
+                        </center>
+                    </div>
+                </div>
+                <!-- KARTA SZPITALA -->
+
+            </div>
+                {% endfor %}
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="addPatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border-radius: 20px !important;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Przypisz pacjenta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Tutaj jakieś panele do przypisania
+                </div>
+                <div class="modal-footer">
+                    <button type="button" style="border-radius: 20px !important;" class="btn btn-secondary"
+                            data-dismiss="modal">Anuluj
+                    </button>
+                    <button type="button"
+                            style="background-color: white; color: black; border: 2px solid #5bc0de; border-radius: 20px !important;"
+                            class="btn btn-primary"> Przypisz &nbsp;<i style="font-size: 20px; color: black;"
+                                                                       class="fas fa-user-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
 {% endblock container %}

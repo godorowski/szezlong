@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% translate "Hospitals List" as title %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block extra_js %}
+{% endblock extra_js %}
+{% block container %}
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">{% translate "Kod Szpitala" %}</th>
+            <th scope="col">{% translate "Nazwa Szpitala" %}</th>
+            <th scope="col">{% translate "Adres Szpitala" %}</th>
+            <th scope="col">
+                {% for spec in specs %}
+                    <a
+                            class="btn {% if current_spec and spec.pk == current_spec.pk %}btn-success{% else %}btn-default{% endif %} spec"
+                            href="?spec={{ spec.id }}{{ param_url }}"
+                    >
+                        {{ spec.name }}
+                    </a>
+                {% endfor %}
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param is None %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}{% else %}#{% endif %}"
+                    >
+                        {% translate "Razem Łóżek" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "all" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=all"
+                    >
+                        {% translate "Dostępnych Łóżek" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "all-expired" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=all-expired"
+                    >
+                        {% translate "Przeterminowanych" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "all-attentions" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=all-attentions"
+                    >
+                        {% translate "Z Uwagami" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "respirators" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators"
+                    >
+                        {% translate "Razem Łóżek Respiratorowych" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "respirators" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators"
+                    >
+                        {% translate "Dostępnych Łóżek Respiratorowych" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "respirators-expired" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators-expired"
+                    >
+                        {% translate "Przeterminowanych Respiratorowych" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "respirators-attentions" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators-attentions"
+                    >
+                        {% translate "Z Uwagami Respiratorowych" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "oxygen" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen"
+                    >
+                        {% translate "Razem Łóżek Tlenowych" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "oxygen" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen"
+                    >
+                        {% translate "Dostępnych Łóżek Tlenowych" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "oxygen" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen-expired"
+                    >
+                        {% translate "Przeterminowanych Tlenowych" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "oxygen" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen-attentions"
+                    >
+                        {% translate "Z Uwagami Tlenowych" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "children" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=children"
+                    >
+                        {% translate "Razem Dziecięce" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "children" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=all-children"
+                    >
+                        {% translate "Dostępne Dziecięce" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "children-respirators" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators-children"
+                    >
+                        {% translate "Dostępne Dziecięce Respiratorowe" %}
+                    </a>
+            </th>
+            <th scope="col">
+                    <a
+                            class="btn btn-{% if param == "children-oxygen" %}success{% else %}default{% endif %} param"
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=oxygen-children"
+                    >
+                        {% translate "Dostępne Dziecięce Tlenowe" %}
+                    </a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hospital, specs in hospitals %}
+            <tr>
+                <td><a href="{% url 'hospital-update' hospital.pk %}">{{ hospital.code }}</a></td>
+                <td><a href="{% url 'hospital-update' hospital.pk %}">{{ hospital.name }}</a></td>
+                <td>{{ hospital.address }}</td>
+
+                <td>
+                    {% for spec in specs %}
+                        <span class="btn btn-success">
+                                {{ spec.name }}
+                            </span>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "all" %}"
+                            class="btn btn-default">
+                        {{ hospital.total_beds }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "all" %}"
+                            class="btn btn-default">
+                        {{ hospital.available_beds }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "all" %}"
+                            class="btn btn-default">
+                        {{ hospital.total_expires }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "all" %}"
+                            class="btn btn-default">
+                        {{ hospital.total_attentions }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "respirators" %}"
+                            class="btn btn-default">
+                        {{ hospital.total_respirators }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "respirators" %}"
+                            class="btn btn-default">
+                        {{ hospital.available_respirators }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "respirators" %}"
+                            class="btn btn-default">
+                        {{ hospital.expires_respirators }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "respirators" %}"
+                            class="btn btn-default">
+                        {{ hospital.attentions_respirators }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "oxygen" %}"
+                            class="btn btn-default">
+                        {{ hospital.total_oxygens }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "oxygen" %}"
+                            class="btn btn-default">
+                        {{ hospital.available_oxygens }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "oxygen" %}"
+                            class="btn btn-default">
+                        {{ hospital.expires_oxygens }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "oxygen" %}"
+                            class="btn btn-default">
+                        {{ hospital.attentions_oxygens }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "children" %}"
+                            class="btn btn-default">
+                        {{ hospital.total_children }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "children" %}"
+                            class="btn btn-default">
+                        {{ hospital.available_children }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "respirators-children" %}"
+                            class="btn btn-default">
+                        {{ hospital.available_children_respirators }}
+                    </a>
+                </td>
+                <td>
+                    <a
+                            href="{% url 'ticket-create' hospital.pk "oxygen-children" %}"
+                            class="btn btn-default">
+                        {{ hospital.available_children_oxygens }}
+                    </a>
+                </td>
+                {#                <td><a href="{% url 'hospital-delete' hospital.pk %}" class="btn btn-danger">#}
+                {#                    {% translate "Delete" %}#}
+                {#                </a></td>#}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'hospital-create' %}" class="btn btn-success">
+        {% translate "Create a New Hospital" %}
+    </a>
+{% endblock container %}

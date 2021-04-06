@@ -21,6 +21,7 @@ class HospitalList(ListView):
         param = self.request.GET.get("param", None)
 
         hospitals = context["hospitals"]
+        hospitals.prefetch_related('specialisations')
 
         if param is not None:
             if param == "all":
