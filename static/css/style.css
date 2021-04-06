@@ -1,0 +1,9 @@
+* {font-family: 'Roboto', sans-serif;}
+
+body {background-image: url('../image/bg.png'); overflow: scroll; }
+ 
+.row {margin: 5px; margin-top: 10px;}
+
+.medicine {font-size: 12px !important; margin-bottom: 2px;}
+
+.outlined {border: 2px solid #5bc0de; margin-bottom: 15px !important;}
