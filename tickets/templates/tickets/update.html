@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% translate "Update Bed" as title %}
+{% translate "Aktualizuj Pacjenta" as title %}
 {% block container %}
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title">{% translate "Update Bed" %} {{ bed.name }}</h5>
+    <div class="card" style="margin: 0 auto; margin-top: 20px; border: 3px red solid; padding: 20px; border-radius:
+    20px; margin-bottom: 18px; background-color: white;">
+        <div class="card-header" style="padding: 10px; border-top-left-radius: 20px; border-top-right-radius:
+        20px;">
+            <h5 class="card-title">{% translate "Aktualizuj Pacjenta" %}</h5>
         </div>
-        <div class="card-body">
-            <form method="post">
+        <div class="card card-body" style="padding: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius:
+        20px;">
+        <form class="form-inline my-2 center" method="post" style="display: flex; align-items: center">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="btn btn-success">{% translate "Update" %}</button>
+                <button type="submit" class="btn btn-success">{% translate "Uaktualnij" %}</button>
             </form>
         </div>
     </div>
