@@ -3,9 +3,10 @@
 
 {% translate "Lista Zleceń na Łóżka" as title %}
 {% block container %}
-    <h2>{{ hospital.code }} {{ hospital.name }}</h2>
-    <h3>{{ hospital.address }}</h3>
-    <ul class="nav nav-tabs">
+    <h2><center>{{ hospital.code }} {{ hospital.name }}</center></h2>
+    <h3><center>{{ hospital.address }}</center></h3>
+<br>
+    <ul class="nav nav-tabs justify-content-center">
         <li class="nav-item">
             <a
                     {% if mode == "all" %}
@@ -15,6 +16,7 @@
                     {% endif %}
                         href="{% url 'ticket-list' hospital.pk "all" %}"
             >
+                <i style="color: black;" class="fas fa-infinity"></i>&nbsp;
                 {% translate "Wszystkie Zlecenia" %}
             </a>
         </li>
@@ -27,7 +29,8 @@
                     {% endif %}
                         href="{% url 'ticket-list' hospital.pk "orphans" %}"
             >
-                {% translate "Oczekujace Zlecenia" %}
+                <i style="color: black;" class="fas fa-hourglass-start"></i>&nbsp;
+                {% translate "Oczekujące Zlecenia" %}
             </a>
         </li>
         <li class="nav-item">
@@ -39,6 +42,7 @@
                     {% endif %}
                         href="{% url 'ticket-list' hospital.pk "expires" %}"
             >
+                <i style="color: black;" class="fas fa-hourglass-end"></i>&nbsp;
                 {% translate "Przeterminowane Zlecenia" %}
             </a>
         </li>
@@ -51,28 +55,31 @@
                     {% endif %}
                         href="{% url 'ticket-list' hospital.pk "attentions" %}"
             >
+                <i style="color: black;" class="fas fa-exclamation"></i>&nbsp;
                 {% translate "Zlecenia z Uwagami" %}
             </a>
         </li>
     </ul>
+
     <div class="card-group hospital-cards">
         {% for ticket in tickets %}
             <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                <h5 class="card-title">{{ ticket }}</h5>
-                    {% if ticket.bed %}
+                <div class="card-body" style="margin: 10px;">
+                <h5 class="card-title" style="font-size: 15px; margin-top: 7px;"><center><b>{{ ticket }}</b></center></h5>
+                <hr>
+                {% if ticket.bed %}
                         <h6 class="card-subtitle">{{ ticket.bed }}</h6>
                         {% if ticket.bed.description %}
                             <p class="card-text">{{ ticket.bed.description }}</p>
                         {% endif %}
                         {% if ticket.bed.respirator %}
-                            <h6 class="card-subtitle">{% translate "Respirator" %}</h6>
+                            <h6 class="card-subtitle" style="margin-top: 3px;">{% translate "Respirator" %}</h6>
                         {% endif %}
                         {% if ticket.bed.oxygen %}
-                            <h6 class="card-subtitle">{% translate "Tlen" %}</h6>
+                            <h6 class="card-subtitle" style="margin-top: 3px;">{% translate "Tlen" %}</h6>
                         {% endif %}
                         {% if ticket.bed.child %}
-                            <h6 class="card-subtitle">{% translate "Dzięcięce" %}</h6>
+                            <h6 class="card-subtitle" style="margin-top: 3px;">{% translate "Dzięcięce" %}</h6>
                         {% endif %}
 
                     {% endif %}
@@ -80,16 +87,19 @@
                     {% for message in bed.ticket.attention %}
                         <h6 class="card-subtitle">{{ message }}</h6>
                     {% endfor %}
+                    <br>
                     <a
                             href="{% url 'ticket-update' ticket.pk %}"
                             class="card-link"
                     >
+                        <i style="color: black;" class="fas fa-check"></i>&nbsp;
                         {% translate "Aktualizuj Dane Pacjenta" %}
-                    </a>
+                    </a><br>
                     <a
                             href="{% url 'ticket-delete' ticket.pk %}"
                             class="card-link"
                     >
+                        <i style="color: black;" class="fas fa-times"></i>&nbsp;
                         {% translate "Zamknij Przydział Pacjenta" %}
                     </a>
                 </div>

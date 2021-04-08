@@ -22,8 +22,7 @@
                         <a
                                 class="btn btn-sm btn-outline-secondary medicine {% if current_spec and spec.pk == current_spec.pk %}btn-success{% else %}btn-default{% endif %} spec"
                                 href="?spec={{ spec.id }}{{ param_url }}"
-                                {% if current_spec and spec.pk == current_spec.pk %}style="background-color: lightgrey; 
-"{% endif %}
+                                {% if current_spec and spec.pk == current_spec.pk %}style="background-color: lightgrey;"{% endif %}
                         >
                             <b style="color: black;">{{ spec.name }}</b>
                         </a>&nbsp;
@@ -33,77 +32,79 @@
 
         </div>
         <form class="form-inline my-2 center">
-            <center>
-                <a href="{% if current_spec %}?spec={{ current_spec.id }}{% else %}?param=all{% endif %}"
-                   style="border-radius: 20px; border: 2px #5bc0de solid; background: white !important; color: black;"
-                   class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
-                   title="Wszystkie łóżka"><i style="color: black;" class="fas fa-2x fa-procedures"></i>
-                </a>&nbsp;&nbsp;&nbsp;
-                <a
-                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators-expired"
-                        style="border-radius: 20px; border: 2px #5bc0de solid;
-                                {% if param == "respirators-expired" %}background: lightgrey !important;
-                                {% else %}background: white !important;{% endif %} color:
-                                black;"
-                        class="btn btn-outline-success my-2 my-sm-0"
-                        data-toggle="tooltip"
-                        data-placement="bottom"
-                        title="Tylko z respiratorami"
-                >
-                    <i style="color: black;" class="fas fa-2x fa-heartbeat"></i>
-                </a>&nbsp;&nbsp;&nbsp;
-                <a
-                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?
-{% endif %}param=oxygen-expired"
-                        style="border-radius: 20px; border: 2px #5bc0de solid;
-                                {% if param == "oxygen-expired" %}background: lightgrey !important;
-                                {% else %}background: white !important;{% endif %} color: black;"
-                        class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
-                        title="Tylko z tlenem"
-                >
-                    <i style="color: black;" class="fas fa-2x fa-lungs"></i>
-                </a>&nbsp;&nbsp;&nbsp;
-                <a
-                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?
-{% endif %}param=children"
-                        style="border-radius: 20px; border: 2px #5bc0de solid; {% if param == "children" %}background: lightgrey !important;
-                        {% else %}background: white !important;{% endif %} color:
-                                black;"
-                        class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
-                        title="Tylko dla dzieci">
-                    <i style="color: black;" class="fas fa-2x fa-baby"></i>
-                </a>&nbsp;&nbsp;&nbsp;
-                <a
-                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=children-respirators"
-                        style="border-radius: 20px; border: 2px #5bc0de solid;
-                                {% if param == "children-respirators" %}background: lightgrey !important;
-                                {% else %}background: white !important;{% endif %} color:
-                                black;"
-                        class="btn btn-outline-success my-2 my-sm-0"
-                        data-toggle="tooltip"
-                        data-placement="bottom"
-                        title="Tylko z respiratorami dla dzieci"
-                >
-                    <i style="color: black;" class="fas fa-2x fa-heartbeat"></i>
-                    <i style="color: black;" class="fas fa-2x fa-baby"></i>
-                </a>&nbsp;&nbsp;&nbsp;
-                <a
-                        href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?
-{% endif %}param=children-oxygen"
-                        style="border-radius: 20px; border: 2px #5bc0de solid;
-                                {% if param == "children-oxygen" %}background: lightgrey !important;
-                                {% else %}background: white !important;{% endif %} color: black;"
-                        class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
-                        title="Tylko z tlenem dla dzieci"
-                >
-                    <i style="color: black;" class="fas fa-2x fa-lungs"></i>
-                    <i style="color: black;" class="fas fa-2x fa-baby"></i>
-                </a>&nbsp;&nbsp;&nbsp;
-                <button style="border-radius: 20px; border: 2px #5bc0de solid; background: white !important; color: black;"
-                        class="btn btn-outline-success my-2 my-sm-0" data-toggle="collapse" href="#collapseSearch">
-                    <i
-                            style="color: black;" class="fas fa-2x fa-search"></i></button>
-            </center>
+            <div style="margin: 0 auto;">
+                <center>
+                    <a href="{% if current_spec %}?spec={{ current_spec.id }}{% else %}?param=all{% endif %}"
+                    style="border-radius: 20px; border: 2px #5bc0de solid; background: white !important; color: black;"
+                    class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
+                    title="Wszystkie łóżka"><i style="color: black;" class="fas fa-2x fa-procedures"></i>
+                    </a>&nbsp;&nbsp;&nbsp;
+                    <a
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=respirators-expired"
+                            style="border-radius: 20px; border: 2px #5bc0de solid;
+                                    {% if param == "respirators-expired" %}background: lightgrey !important;
+                                    {% else %}background: white !important;{% endif %} color:
+                                    black;"
+                            class="btn btn-outline-success my-2 my-sm-0"
+                            data-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Tylko z respiratorami"
+                    >
+                        <i style="color: black;" class="fas fa-2x fa-lungs"></i>
+                    </a>&nbsp;&nbsp;&nbsp;
+                    <a
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?
+    {% endif %}param=oxygen-expired"
+                            style="border-radius: 20px; border: 2px #5bc0de solid;
+                                    {% if param == "oxygen-expired" %}background: lightgrey !important;
+                                    {% else %}background: white !important;{% endif %} color: black;"
+                            class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
+                            title="Tylko z tlenem"
+                    >
+                        <i style="color: black;" class="fas fa-2x fa-wind"></i>
+                    </a>&nbsp;&nbsp;&nbsp;
+                    <a
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?
+    {% endif %}param=children"
+                            style="border-radius: 20px; border: 2px #5bc0de solid; {% if param == "children" %}background: lightgrey !important;
+                            {% else %}background: white !important;{% endif %} color:
+                                    black;"
+                            class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
+                            title="Tylko dla dzieci">
+                        <i style="color: black;" class="fas fa-2x fa-baby"></i>
+                    </a>&nbsp;&nbsp;&nbsp;
+                    <a
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?{% endif %}param=children-respirators"
+                            style="border-radius: 20px; border: 2px #5bc0de solid;
+                                    {% if param == "children-respirators" %}background: lightgrey !important;
+                                    {% else %}background: white !important;{% endif %} color:
+                                    black;"
+                            class="btn btn-outline-success my-2 my-sm-0"
+                            data-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Tylko z respiratorami dla dzieci"
+                    >
+                        <i style="color: black;" class="fas fa-2x fa-lungs"></i>
+                        <i style="color: black;" class="fas fa-2x fa-baby"></i>
+                    </a>&nbsp;&nbsp;&nbsp;
+                    <a
+                            href="{% if current_spec %}?spec={{ current_spec.id }}&{% else %}?
+    {% endif %}param=children-oxygen"
+                            style="border-radius: 20px; border: 2px #5bc0de solid;
+                                    {% if param == "children-oxygen" %}background: lightgrey !important;
+                                    {% else %}background: white !important;{% endif %} color: black;"
+                            class="btn btn-outline-success my-2 my-sm-0" data-toggle="tooltip" data-placement="bottom"
+                            title="Tylko z tlenem dla dzieci"
+                    >
+                        <i style="color: black;" class="fas fa-2x fa-wind"></i>
+                        <i style="color: black;" class="fas fa-2x fa-baby"></i>
+                    </a>&nbsp;&nbsp;&nbsp;
+                    <button style="border-radius: 20px; border: 2px #5bc0de solid; background: white !important; color: black;"
+                            class="btn btn-outline-success my-2 my-sm-0" data-toggle="collapse" href="#collapseSearch">
+                        <i
+                                style="color: black;" class="fas fa-2x fa-search"></i></button>
+                    </div>
+                </center>
         </form>
 
         <div class="collapse" id="collapseSearch" style="margin-top: 16px;">
@@ -167,9 +168,9 @@
                            style="width: 100%; border-radius: 0px; margin-bottom: -35px; margin-top: 9px;">
                             <i style="color: white;" class="fas fa-chevron-down"></i>
                             &nbsp; więcej informacji &nbsp;
-                            <i style="font-size: 23px; color: white;" class="fas fa-heartbeat" data-toggle="tooltip"
-                               data-placement="bottom" title="Łóżka z respiratorami"></i>&nbsp;
                             <i style="font-size: 23px; color: white;" class="fas fa-lungs" data-toggle="tooltip"
+                               data-placement="bottom" title="Łóżka z respiratorami"></i>&nbsp;
+                            <i style="font-size: 23px; color: white;" class="fas fa-wind" data-toggle="tooltip"
                                data-placement="bottom" title="Łóżka z tlenem"></i>&nbsp;
                             <i style="font-size: 23px; color: white;" class="fas fa-baby" data-toggle="tooltip"
                                data-placement="bottom" title="Łóżka dla dzieci"></i>&nbsp;&nbsp;
@@ -183,12 +184,12 @@
                                 Dostępne: {{ hospital.available_beds }}
                                 Przeterminowane: {{ hospital.total_expires }}<br>
                                 Z uwagami: {{ hospital.total_attentions }}<br><br>
-                                <i style="color: black;" class="fas fa-2x fa-heartbeat"></i>
+                                <i style="color: black;" class="fas fa-2x fa-lungs"></i>
                                 <span style="color: #5bc0de; font-weight: 600">Dostępne respiratorowe: {{ hospital.available_respirators }}<br></span>
                                 Wszystkie respiratorowe: {{ hospital.total_respirators }}<br>
                                 Przeterminowane respiratorowe: {{ hospital.expires_respirators }}<br>
                                 Z uwagami respiratorowe: {{ hospital.attentions_respirators }}<br><br>
-                                <i style="color: black;" class="fas fa-2x fa-lungs"></i>
+                                <i style="color: black;" class="fas fa-2x fa-wind"></i>
                                 <span style="color: #5bc0de; font-weight: 600">Dostępne tlenowe: {{ hospital.available_oxygens }}<br></span>
                                 Wszystkie tlenowe: {{ hospital.total_oxygens }}<br>
                                 Przeterminowane tlenowe: {{ hospital.expires_oxygens }}<br>
