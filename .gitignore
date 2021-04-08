@@ -2,3 +2,5 @@
 /*.env
 .idea
 __pycache__
+/static_src/node_modules/
+/static_src/package-lock.json
