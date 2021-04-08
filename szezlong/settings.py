@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'crispy_forms',
     'hospitals',
     'beds',
     'tickets',
@@ -79,18 +80,24 @@ WSGI_APPLICATION = 'szezlong.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE':   'django.db.backends.postgresql_psycopg2',
-        'NAME':     config.POSTGRES_DB,
-        'USER':     config.POSTGRES_USER,
-        'PASSWORD': config.POSTGRES_PASSWORD,
-        'HOST':     config.POSTGRES_HOST,
-        'PORT':     config.POSTGRES_PORT
-    },
-}
-
+if config.SQLITE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'szezlong.db',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE':   'django.db.backends.postgresql_psycopg2',
+            'NAME':     config.POSTGRES_DB,
+            'USER':     config.POSTGRES_USER,
+            'PASSWORD': config.POSTGRES_PASSWORD,
+            'HOST':     config.POSTGRES_HOST,
+            'PORT':     config.POSTGRES_PORT
+        },
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

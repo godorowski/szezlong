@@ -5,6 +5,7 @@ from beret_utils import get_config
 from beret_utils import get_path_fun
 from beret_utils.config import bool_value
 from beret_utils.config import join_path_value
+from beret_utils.config import EnvValue
 
 get_path = get_path_fun()
 
@@ -37,6 +38,7 @@ DEFAULT_SETTINGS += (
 # debugging settings
 DEFAULT_SETTINGS += (
     ("DEBUG", 1, bool_value),
+    ("SQLITE", EnvValue("DEBUG"), bool_value),
 
 )
 

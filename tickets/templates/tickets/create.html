@@ -12,9 +12,13 @@
         </div>
         <div class="card card-body" style="padding: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius:
         20px;">
-        <form class="form-inline my-2 center" method="post" style="display: flex; align-items: center">
+            <form class="form-inline my-2 center" method="post" style="display: flex; align-items: center">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
                 <button
                         type="submit"
                         class="btn btn-success"

@@ -10,7 +10,11 @@
         <div class="card-body">
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                    <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
                 <button type="submit" class="btn btn-success">{% translate "Update" %}</button>
             </form>
         </div>

@@ -3,7 +3,9 @@ wagtail
 
 # for django and core packages
 Django
-psycopg2
+
+# For postgres database
+#psycopg2
 
 # base django extensions
 django-extensions
@@ -43,3 +45,6 @@ djangorestframework-api-key # for api key authentiation
 # Frontend support
 # https://python-webpack-boilerplate.readthedocs.io/
 python-webpack-boilerplate
+
+# Bootstrap forms
+django-crispy-forms
