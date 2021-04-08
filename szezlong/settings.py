@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'crispy_forms',
     "crispy_bootstrap5",
+    "crispy_custom",
     'hospitals',
     'beds',
     'tickets',
@@ -155,6 +156,6 @@ STATIC_ROOT = get_path('static')
 STATIC_URL = '/static/'
 
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_ALLOWED_TEMPLATE_PACKS = ("bootstrap5_custom", "bootstrap5", "bootstrap4_custom",)
 
-CRISPY_TEMPLATE_PACK = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap4_custom"
