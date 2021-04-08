@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 
 {% translate "Wprowadź nowe łóżka." as title %}
@@ -11,11 +12,7 @@
         <div class="card-body">
             <form method="post">
                 {% csrf_token %}
-                {{ field.errors }}
-                {{ field.label_tag }} {{ field }}
-                {% if field.help_text %}
-                    <p class="help">{{ field.help_text|safe }}</p>
-                {% endif %}
+                {{ form|crispy }}
                 <button
                         type="submit"
                         class="btn btn-success"

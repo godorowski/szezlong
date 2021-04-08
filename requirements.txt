@@ -48,3 +48,4 @@ python-webpack-boilerplate
 
 # Bootstrap forms
 django-crispy-forms
+crispy-bootstrap5

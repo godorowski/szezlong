@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 
 {% translate "Wprowadź Nowego Pacjenta." as title %}
@@ -12,13 +13,9 @@
         </div>
         <div class="card card-body" style="padding: 10px; border-bottom-left-radius: 20px; border-bottom-right-radius:
         20px;">
-            <form class="form-inline my-2 center" method="post" style="display: flex; align-items: center">
+        <form class="form-inline my-2 center" method="post" style="display: flex; align-items: center">
                 {% csrf_token %}
-                {{ field.errors }}
-                {{ field.label_tag }} {{ field }}
-                {% if field.help_text %}
-                    <p class="help">{{ field.help_text|safe }}</p>
-                {% endif %}
+                {{ form|crispy }}
                 <button
                         type="submit"
                         class="btn btn-success"
