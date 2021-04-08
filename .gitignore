@@ -1,4 +1,4 @@
 /static/
-.local.env
+/*.env
 .idea
 __pycache__
