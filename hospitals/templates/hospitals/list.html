@@ -22,7 +22,7 @@
                         <a
                                 class="btn btn-sm btn-outline-secondary medicine {% if current_spec and spec.pk == current_spec.pk %}btn-success{% else %}btn-default{% endif %} spec"
                                 href="?spec={{ spec.id }}{{ param_url }}"
-                                {% if current_spec and spec.pk == current_spec.pk %}style="background-color: lightgrey;
+                                {% if current_spec and spec.pk == current_spec.pk %}style="background-color: lightgrey; 
 "{% endif %}
                         >
                             <b style="color: black;">{{ spec.name }}</b>
